@@ -12,6 +12,7 @@ contract Token{
     mapping(address => uint) balances; // mapping address : balance
 
     constructor(){
+        
         balances[msg.sender] = totalSupply; // initially transferring the total supply to one address
         owner = msg.sender; 
         /* because constructor gets invoked only when the contract is deployed, the person who deploys 
