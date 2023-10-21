@@ -2,6 +2,8 @@
 
 pragma solidity >= 0.5.0 < 0.9.0;
 
+import "hardhat/console.sol";
+
 contract Token{
     string public tokenName = "Saif's Token"; // name of our token
     string public symbol = "STK"; // symbol of the token
@@ -12,7 +14,7 @@ contract Token{
     mapping(address => uint) balances; // mapping address : balance
 
     constructor(){
-        
+        //console.log("**before constructor setter => balances[msg.sender] : ",balances[msg.sender]);
         balances[msg.sender] = totalSupply; // initially transferring the total supply to one address
         owner = msg.sender; 
         /* because constructor gets invoked only when the contract is deployed, the person who deploys 
@@ -20,6 +22,7 @@ contract Token{
     }
 
     function transfer(address to, uint amount)  external {
+        console.log("transfer to %s the amount is %d",to,amount);
         require(balances[msg.sender] >= amount,"Not enough tokens");
         balances[msg.sender] -= amount;
         balances[to] += amount;
