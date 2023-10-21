@@ -1,1 +1,5 @@
 node_modules
+package-lock.json
+hardhat.config.js
+package.json
+.gitignore
